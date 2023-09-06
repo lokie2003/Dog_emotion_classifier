@@ -27,9 +27,15 @@ def preprocess_image_pil(image):
 
 # Streamlit UI
 st.title('DOG EMOTION CLASSIFIER')
-
+# Add borders to separate tabs
+st.markdown(
+    "<style>"
+    ".stSelectbox { border: 2px solid #ccc; border-radius: 4px; padding: 8px; }"
+    "</style>",
+    unsafe_allow_html=True,
+)
 # Create tabs using selectbox
-selected_tab = st.selectbox("SELECT A TAB", ["Introduction", "Prediction"])
+selected_tab = st.selectbox("SELECT A TAB", ["INTRODUCTION", "PREDICTION"])
 
 # Introduction tab
 if selected_tab == "INTRODUCTION":
