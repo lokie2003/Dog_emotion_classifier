@@ -1,8 +1,7 @@
-python -m pip install --upgrade pip
+opencv-python-headless
 streamlit
 tensorflow
 opencv-python
 numpy
 scikit-learn
 pandas
-cv2
