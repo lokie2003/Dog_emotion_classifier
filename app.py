@@ -24,48 +24,39 @@ def preprocess_image_pil(image):
     img = image.resize((224, 224))
     img = np.array(img) / 255.0
     return img
-def home():
-    st.write("## Introduction")
-    st.write("This app uses  convolutional neural network  to classify variety rice image into five different class category")
-   
-    
-    st.write("This Data contains around 75k images of size 50x50 distributed under 5 categories.")
-    st.write("'Arborio' -> 0")
-    st.write("'Basmati' -> 1")
-    st.write("'Ispala' -> 2")
-    st.write("'Jasmine' -> 3")
-    st.write("'Karacadag' -> 4")
-def prediction():
-    # Streamlit UI
-    st.title('Dog Emotion Classifier')
-    
+
+# Streamlit UI
+st.title('Dog Emotion Classifier')
+
+# Create tabs
+tabs = st.beta_container()
+
+# Introduction tab
+with tabs:
+    st.title('Introduction')
+    st.write('This is a dog emotion classifier using a pre-trained ResNet model.')
+    st.write('Upload a dog image to predict the dog\'s emotion.')
+
+# Prediction tab
+with tabs:
+    st.title('Prediction')
     # Upload an image
     uploaded_image = st.file_uploader('Upload a dog image', type=['jpg', 'jpeg'])
-    
+
     if uploaded_image is not None:
         # Display the uploaded image
         image = Image.open(uploaded_image)
         st.image(image, caption='Uploaded Image', use_column_width=True)
-    
+
         # Process the image
         processed_image = preprocess_image_pil(image)
-    
+
         # Make a prediction
         prediction = model.predict(np.expand_dims(processed_image, axis=0))
         predicted_class_index = np.argmax(prediction)
         predicted_class = emotion_labels[predicted_class_index]
         predicted_class_probability = prediction[0][predicted_class_index]
-    
+
         # Display the prediction
         st.write(f'Predicted Emotion: {predicted_class}')
         st.write(f'Predicted Emotion Probability: {predicted_class_probability:.2f}')
-
-# Streamlit footer
-st.sidebar.markdown('**About**')
-st.sidebar.text('This is a dog emotion classifier using a pre-trained ResNet model.')
-st.sidebar.text('Built with TensorFlow and Streamlit.')
-st.set_page_config(page_title="Rice Image Classification", page_icon=":heart:")
-st.markdown("<h1 style='text-align: center; color: white;'>Rice Image Classification</h1>", unsafe_allow_html=True)
-# Create the tab layout
-tabs = ["Home", "Classification"]
-page = st.sidebar.selectbox("Select a page", tabs)
