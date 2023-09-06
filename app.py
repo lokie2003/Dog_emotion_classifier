@@ -1,10 +1,9 @@
 import streamlit as st
 import numpy as np
 import tensorflow as tf
-import PIL.Image as Image
-import cv2
 import pathlib
 import tensorflow_hub as hub
+from PIL import Image
 
 # Register the custom KerasLayer
 hub_layer = hub.KerasLayer("https://tfhub.dev/google/imagenet/resnet_v2_50/feature_vector/4", trainable=False)
@@ -20,11 +19,9 @@ def load_model():
 
 model = load_model()
 
-# Define a function to preprocess the image
-def preprocess_image(image):
-    # Ensure image is in BGR format (OpenCV uses BGR)
-    bgr_image = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
-    img = cv2.resize(bgr_image, (224, 224))
+# Define a function to preprocess the image using Pillow (PIL)
+def preprocess_image_pil(image):
+    img = image.resize((224, 224))
     img = np.array(img) / 255.0
     return img
 
@@ -40,7 +37,7 @@ if uploaded_image is not None:
     st.image(image, caption='Uploaded Image', use_column_width=True)
 
     # Process the image
-    processed_image = preprocess_image(image)
+    processed_image = preprocess_image_pil(image)
 
     # Make a prediction
     prediction = model.predict(np.expand_dims(processed_image, axis=0))
