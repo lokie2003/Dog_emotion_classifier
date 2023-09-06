@@ -33,9 +33,9 @@ selected_tab = st.selectbox("Select a tab:", ["Introduction", "Prediction"])
 
 # Introduction tab
 if selected_tab == "Introduction":
-    st.title('Introduction')
-    st.write('This is a dog emotion classifier using a pre-trained ResNet model.')
-    st.write('Upload a dog image to predict the dog\'s emotion.')
+    st.title('INTRODUCTION')
+    st.write('THIS IS DOG EMOTION CLASSIFIER USING RESNET FEATURE ENGINEERING')
+    st.write('UPLOAD A DOG PICTURE TO CHECK ITS EMOTION')
 
 # Prediction tab
 if selected_tab == "Prediction":
