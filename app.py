@@ -28,17 +28,17 @@ def preprocess_image_pil(image):
 # Streamlit UI
 st.title('Dog Emotion Classifier')
 
-# Create tabs
-tabs = st.beta_container()
+# Create tabs using selectbox
+selected_tab = st.selectbox("Select a tab:", ["Introduction", "Prediction"])
 
 # Introduction tab
-with tabs:
+if selected_tab == "Introduction":
     st.title('Introduction')
     st.write('This is a dog emotion classifier using a pre-trained ResNet model.')
     st.write('Upload a dog image to predict the dog\'s emotion.')
 
 # Prediction tab
-with tabs:
+if selected_tab == "Prediction":
     st.title('Prediction')
     # Upload an image
     uploaded_image = st.file_uploader('Upload a dog image', type=['jpg', 'jpeg'])
