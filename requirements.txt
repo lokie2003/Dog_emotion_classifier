@@ -2,6 +2,5 @@ tensorflow
 streamlit
 opencv
 scikit-learn
-cv2
 numpy
 pandas
