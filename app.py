@@ -26,20 +26,20 @@ def preprocess_image_pil(image):
     return img
 
 # Streamlit UI
-st.title('Dog Emotion Classifier')
+st.title('DOG EMOTION CLASSIFIER')
 
 # Create tabs using selectbox
-selected_tab = st.selectbox("Select a tab:", ["Introduction", "Prediction"])
+selected_tab = st.selectbox("SELECT A TAB", ["Introduction", "Prediction"])
 
 # Introduction tab
-if selected_tab == "Introduction":
+if selected_tab == "INTRODUCTION":
     st.title('INTRODUCTION')
     st.write('THIS IS DOG EMOTION CLASSIFIER USING RESNET FEATURE ENGINEERING')
     st.write('UPLOAD A DOG PICTURE TO CHECK ITS EMOTION')
 
 # Prediction tab
-if selected_tab == "Prediction":
-    st.title('Prediction')
+if selected_tab == "PREDICTION":
+    st.title('PREDICTION')
     # Upload an image
     uploaded_image = st.file_uploader('Upload a dog image', type=['jpg', 'jpeg'])
 
