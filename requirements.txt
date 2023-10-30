@@ -4,4 +4,3 @@ scikit-learn
 numpy
 pandas
 tensorflow_hub
-cv2
